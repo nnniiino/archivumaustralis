@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Archivo Austral</title>
+	<meta charset="utf-8"/>
+	<link rel='stylesheet' type='text/css' href="style.css">
+</head>
+
+<body>
+    <div class="back-to-home">
+        <a href="index.html">
+            <img src="archivumaustralis.png" alt="Volver a Inicio" />
+        </a>
+    </div>
+ <h1>Ciencia de Datos</h1>
+ <input type="text" id="searchBar" onkeyup="searchMaterias()" placeholder="Buscar materias...">
+ <div class="materias">
+    <h2>Materias</h2>
+    <h3>Primer Año</h3>
+    <ul>
+<li><a href="materias/mat114.html">🖥️Matemática para Machine Learning I</a></li>
+<li><a href="materias/mat115.html">🖥️Programación I</a></li>
+<li><a href="materias/mat116.html">🖥️Programación II</a></li>
+<li><a href="materias/mat117.html">🖥️Intro. a los Problemas básicos de las Ciencias Biomédicas</a></li>
+<li><a href="materias/mat118.html">🖥️Taller de Internet I</a></li>
+<li><a href="materias/mat119.html">🖥️Taller de Internet II</a></li>
+<li><a href="materias/mat120.html">🖥️Estadística I</a></li>
+<li><a href="materias/mat121.html">🖥️Introducción a los Problemas básicos de Administración y Economía</a></li>
+<li><a href="materias/mat122.html">Matemática Discreta</a></li>
+    </ul>
+
+    <h3>Segundo Año</h3>
+    <ul>
+<li><a href="materias/mat123.html">Matemática para Machine Learning II</a></li>
+<li><a href="materias/mat124.html">🖥️Algoritmos y Estructuras de Datos</a></li>
+<li><a href="materias/mat125.html">🖥️Introducción a los Problemas de Física</a></li>
+<li><a href="materias/mat126.html">🖥️Taller de Resolución de Problemas I</a></li>
+<li><a href="materias/mat127.html">🖥️Taller de Resolución de Problemas II</a></li>
+<li><a href="materias/mat128.html">👤Teología I</a></li>
+<li><a href="materias/mat129.html">👤Teología II</a></li>
+<li><a href="materias/mat130.html">🖥️Estadística II</a></li>
+<li><a href="materias/mat131.html">🖥️Base de Datos</a></li>
+<li><a href="materias/mat132.html">🔊Intro. al Mkt online y los negocios digitales</a></li>
+<li><a href="materias/mat133.html">🖥️Intro. a los problemas de la industria y el comercio</a></li>
+    </ul>
+
+    <h3>Tercer Año</h3>
+    <ul>
+<li><a href="materias/mat134.html">Cálculo Numérico y Simulación</a></li>
+<li><a href="materias/mat135.html">🖥️Computación I</a></li>
+<li><a href="materias/mat136.html">🖥️Computación II</a></li>
+<li><a href="materias/mat137.html">Taller de Preprocesamiento de Datos</a></li>
+<li><a href="materias/mat138.html">👤Ética General</a></li>
+<li><a href="materias/mat139.html">Optimización e Investigación Operativa</a></li>
+<li><a href="materias/mat140.html">🖥️Procesamiento de Big Data</a></li>
+<li><a href="materias/mat141.html">🖥️Taller de Resolución de Problemas III: Problemas de la Ciencia</a></li>
+<li><a href="materias/mat142.html">🖥️Procesamiento de Imágenes</a></li>
+<li><a href="materias/mat143.html">🖥️Análisis Multivariado y Descubrimiento de Patrones</a><li>
+<li><a href="materias/mat144.html">🖥️Algoritmos y Estructuras de Datos</a></li>
+    </ul>
+
+    <h3>Cuarto Año</h3>
+    <ul>
+<li><a href="materias/mat145.html">🖥️Modelos de Aprendizaje I</a></li>
+<li><a href="materias/mat146.html">🖥️Desarrollo de Software y Mantenimiento</a></li>
+<li><a href="materias/mat147.html">Legal</a></li>
+<li><a href="materias/mat148.html">Proyecto</a></li>
+<li><a href="materias/mat149.html">Ética Profesional</a></li>
+<li><a href="materias/mat150.html">🖥️Modelos de Aprendizaje II</a></li>
+<li><a href="materias/mat151.html">🖥️Taller de Procesamiento de Series de Tiempo</a></li>
+<li><a href="materias/mat152.html">Proyecto</a></li>
+<li><a href="materias/mat153.html">🖥️Taller de Procesamiento de Datos no Estructurados</a></li>
+<li><a href="materias/mat154.html">Responsabilidad Social</a></li>
+    </ul>
+</div>
+    <script>
+        function searchMaterias() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            input = input.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar tildes
+    
+            let ulElements = document.querySelectorAll('.materias ul');
+    
+            ulElements.forEach(ul => {
+                let liElements = ul.getElementsByTagName('li');
+                for (let i = 0; i < liElements.length; i++) {
+                    let a = liElements[i].getElementsByTagName('a')[0];
+                    let textValue = a.textContent || a.innerText;
+                    textValue = textValue.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar tildes
+    
+                    liElements[i].style.display = textValue.includes(input) ? "" : "none";
+                }
+            });
+        }
+    </script>
+
+  </body>
+</html>

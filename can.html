@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Archivo Austral</title>
+	<meta charset="utf-8"/>
+	<link rel='stylesheet' type='text/css' href="style.css">
+</head>
+
+<body>
+  <div class="back-to-home">
+    <a href="index.html">
+        <img src="archivumaustralis.png" alt="Volver a Inicio" />
+    </a>
+</div>
+ <h1>Agronegocios</h1>
+ <input type="text" id="searchBar" onkeyup="searchMaterias()" placeholder="Buscar materias...">
+ <div class="materias">
+    <h2>Materias</h2>
+    <h3>Primer Año</h3>
+    <ul>
+<li><a href="materias/mat1.html">🔢Álgebra y Geometría</a></li>
+<li><a href="materias/mat2.html">🔢Análisis Matemático I</a></li>
+<li><a href="materias/mat3.html">👤Introd. a la Filosofía</a></li>
+<li><a href="materias/mat4.html">👤Antropología</a></li>
+<li><a href="materias/mat5.html">👤Historia del Pensamiento Económico y Social</a></li>
+<li><a href="materias/mat6.html">🧮Introd. a la Contabilidad</a></li>
+<li><a href="materias/mat7.html">🧮Contabilidad Básica</a></li>
+<li><a href="materias/mat8.html">👁️Administración I</a></li>
+<li><a href="materias/mat9.html">👁️Administración II</a></li>
+<li><a href="materias/mat10.html">⚖️Derecho Público y Constitucional</a></li>
+    </ul>
+
+    <h3>Segundo Año</h3>
+    <ul>
+      <li><a href="materias/mat12.html">🏦Matemática Financiera</a></li>
+<li><a href="materias/mat13.html">👤Teología</a></li>
+<li><a href="materias/mat14.html">💰Economía General</a></li>
+<li><a href="materias/mat15.html">💰Microeconomía</a></li>
+<li><a href="materias/mat16.html">🧮Estados Contables I</a></li>
+<li><a href="materias/mat46.html">🧮Estados Contables II</a></li>
+<li><a href="materias/mat17.html">Intr. a Business Intelligence</a></li>
+<li><a href="materias/mat18.html">👷‍♂️Comportamiento Humano</a></li>
+<li><a href="materias/mat19.html">⚖️Instituciones de Derecho Civil y Comercial</a></li>
+<li><a href="materias/mat20.html">⚖️Derecho Empresario</a></li>
+    </ul>
+
+      <h3>Tercer Año</h3>
+    <ul>
+      <li><a href="materias/mat21.html">🖥️Estadística</a></li>
+<li><a href="materias/mat22.html">🚛Métodos Cuantitativos</a></li>
+<li><a href="materias/mat23.html">👤Teología Moral</a></li>
+<li><a href="materias/mat24.html">💰Macroeconomía</a></li>
+<li><a href="materias/mat25.html">🏦Finanzas Corporativas</a></li>
+<li><a href="materias/mat26.html">🏦Finanzas de Mercado</a></li>
+<li><a href="materias/mat27.html">🧮Costos</a></li>
+<li><a href="materias/mat28.html">🧮Fundamentos de Tributación</a></li>
+<li><a href="materias/mat29.html">🔊Introd. a la Comercialización</a></li>
+<li><a href="materias/mat30.html">⚖️Sociedades</a></li>
+    </ul>
+
+    <h3>Cuarto Año</h3>
+    <ul>
+<li><a href="materias/mat59.html">🚜Mercados - Commodities</a></li>
+<li><a href="materias/mat60.html">🚜Política de Empresa</a></li>
+<li><a href="materias/mat61.html">🚜Comercio Internacional Agroindustrial</a></li>
+<li><a href="materias/mat62.html">🚜Operaciones Agroindustriales I</a></li>
+<li><a href="materias/mat63.html">🚜Operaciones Agroindustriales II</a></li>
+<li><a href="materias/mat64.html">🚜International Business</a></li>
+<li><a href="materias/mat65.html">🚜Futuros y Opciones</a></li>
+<li><a href="materias/mat66.html">🚜Cadenas de Valor</a></li>
+<li><a href="materias/mat67.html">🚜Metodologías de la Investigación</a></li>
+    </ul>
+    </div>
+
+    <script>
+      function searchMaterias() {
+          let input = document.getElementById('searchBar').value.toLowerCase();
+          input = input.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar tildes
+  
+          let ulElements = document.querySelectorAll('.materias ul');
+  
+          ulElements.forEach(ul => {
+              let liElements = ul.getElementsByTagName('li');
+              for (let i = 0; i < liElements.length; i++) {
+                  let a = liElements[i].getElementsByTagName('a')[0];
+                  let textValue = a.textContent || a.innerText;
+                  textValue = textValue.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar tildes
+  
+                  liElements[i].style.display = textValue.includes(input) ? "" : "none";
+              }
+          });
+      }
+  </script>
+
+  </body>
+</html>
