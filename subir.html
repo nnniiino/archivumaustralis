@@ -33,11 +33,18 @@
     $('#uploadfile').on("change", function() {
         var file = this.files[0];
         var allowedExtensions = /(\.pdf|\.doc|\.docx|\.xls|\.xlsx|\.txt|\.jpg|\.jpeg)$/i;
+        var maxSize = 30 * 1024 * 1024;
         
         // Validar la extensión del archivo
         if (!allowedExtensions.exec(file.name)) {
             alert('Formato de archivo no permitido. Solo se permiten archivos con las extensiones: .pdf, .doc, .docx, .xls, .xlsx, .txt, .jpg, .jpeg');
             this.value = ''; // Limpia el campo de archivo
+            return false;
+        }
+
+                if (file.size > maxSize) {
+            alert('El archivo excede el límite de 30 MB.');
+            this.value = '';
             return false;
         }
 
