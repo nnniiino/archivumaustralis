@@ -75,7 +75,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('difum.png');
+    background-image: url('fondodifuminado.png');
     background-size: cover;
     background-position: center;
     filter: blur(10px);
