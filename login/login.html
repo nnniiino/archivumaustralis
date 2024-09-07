@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso con PIN</title>
+  <link rel='stylesheet' type='text/css' href="stylelogin.css">
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <h1>Ingresa el PIN</h1>
+    <div class="pin-input">
+      <input type="text" id="pin1" maxlength="1" oninput="moveToNext(this, 'pin2')">
+      <input type="text" id="pin2" maxlength="1" oninput="moveToNext(this, 'pin3')">
+      <input type="text" id="pin3" maxlength="1" oninput="moveToNext(this, 'pin4')">
+      <input type="text" id="pin4" maxlength="1" oninput="moveToNext(this, 'pin5')">
+      <input type="text" id="pin5" maxlength="1" oninput="moveToNext(this, 'pin6')">
+      <input type="text" id="pin6" maxlength="1" oninput="moveToNext(this, null)">
+    </div>
+    <br>
+    <button onclick="checkPin()">Acceder</button>
+    <p id="message" style="color: red;"></p>
+  </div>
+
+  <script>
+    function moveToNext(current, nextFieldId) {
+      if (current.value.length >= 1 && nextFieldId) {
+        document.getElementById(nextFieldId).focus();
+      }
+    }
+
+    function checkPin() {
+      var pin1 = document.getElementById('pin1').value;
+      var pin2 = document.getElementById('pin2').value;
+      var pin3 = document.getElementById('pin3').value;
+      var pin4 = document.getElementById('pin4').value;
+      var pin5 = document.getElementById('pin5').value;
+      var pin6 = document.getElementById('pin6').value;
+
+      var inputPin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6;
+      var correctPin = '132435';
+
+      if (inputPin === correctPin) {
+  sessionStorage.setItem('authenticated', 'true'); 
+  window.location.href = '../index.html'; 
+} else {
+  document.getElementById('message').textContent = 'PIN incorrecto. Inténtalo de nuevo.';
+}
+    }
+  </script>
+</body>
+</html>
