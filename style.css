@@ -313,3 +313,34 @@ label {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
+
+.donation-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.donation-button:hover {
+  background-color: #2e83aa;
+}
+
+.donation-button img {
+  width: 120px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.donation-button span {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  vertical-align: middle;
+}
