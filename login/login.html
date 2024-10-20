@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archivo Austral</title>
-  <link rel="shortcut icon" type="x-icon" href="../aaicon.png"/>
+  <title>Acceso con PIN</title>
   <link rel='stylesheet' type='text/css' href="stylelogin.css">
 </head>
 <body>
@@ -12,12 +11,12 @@
   <div class="container">
     <h1>Ingresa el PIN</h1>
     <div class="pin-input">
-      <input type="text" id="pin1" maxlength="1" oninput="moveToNext(this, 'pin2')">
-      <input type="text" id="pin2" maxlength="1" oninput="moveToNext(this, 'pin3')">
-      <input type="text" id="pin3" maxlength="1" oninput="moveToNext(this, 'pin4')">
-      <input type="text" id="pin4" maxlength="1" oninput="moveToNext(this, 'pin5')">
-      <input type="text" id="pin5" maxlength="1" oninput="moveToNext(this, 'pin6')">
-      <input type="text" id="pin6" maxlength="1" oninput="moveToNext(this, null)">
+      <input type="text" id="pin1" maxlength="1" oninput="validateInput(this, 'pin2')" onkeydown="moveBack(this, 'pin1', 'pin2', event)">
+      <input type="text" id="pin2" maxlength="1" oninput="validateInput(this, 'pin3')" onkeydown="moveBack(this, 'pin1', 'pin3', event)">
+      <input type="text" id="pin3" maxlength="1" oninput="validateInput(this, 'pin4')" onkeydown="moveBack(this, 'pin2', 'pin4', event)">
+      <input type="text" id="pin4" maxlength="1" oninput="validateInput(this, 'pin5')" onkeydown="moveBack(this, 'pin3', 'pin5', event)">
+      <input type="text" id="pin5" maxlength="1" oninput="validateInput(this, 'pin6')" onkeydown="moveBack(this, 'pin4', 'pin6', event)">
+      <input type="text" id="pin6" maxlength="1" oninput="validateInput(this, null)" onkeydown="moveBack(this, 'pin5', null, event)">
     </div>
     <br>
     <button onclick="checkPin()">Acceder</button>
@@ -25,9 +24,23 @@
   </div>
 
   <script>
-    function moveToNext(current, nextFieldId) {
+    function validateInput(current, nextFieldId) {
+      const validCharacters = /^[0-9]$/;
+      if (!validCharacters.test(current.value)) {
+        current.value = '';  // Borra el valor si no es un número
+        return;
+      }
       if (current.value.length >= 1 && nextFieldId) {
-        document.getElementById(nextFieldId).focus();
+        document.getElementById(nextFieldId).focus();  // Mueve al siguiente campo si es válido
+      }
+    }
+
+    function moveBack(current, prevFieldId, nextFieldId, event) {
+      if (current.value === '' && prevFieldId && event.key === 'Backspace') {
+        document.getElementById(prevFieldId).focus();
+        document.getElementById(prevFieldId).value = ''; // Limpiar el campo previo
+      } else if (current.value !== '' && nextFieldId && event.key === 'Backspace') {
+        current.value = ''; // Limpiar el campo actual si contiene un valor y se presiona "Backspace"
       }
     }
 
@@ -43,11 +56,11 @@
       var correctPin = '132435';
 
       if (inputPin === correctPin) {
-  sessionStorage.setItem('authenticated', 'true'); 
-  window.location.href = '../index.html'; 
-} else {
-  document.getElementById('message').textContent = 'PIN incorrecto. Inténtalo de nuevo.';
-}
+        sessionStorage.setItem('authenticated', 'true'); 
+        window.location.href = '../index.html'; 
+      } else {
+        document.getElementById('message').textContent = 'PIN incorrecto. Inténtalo de nuevo.';
+      }
     }
   </script>
 </body>
