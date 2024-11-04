@@ -369,5 +369,6 @@ label {
 .loading-content img {
     width: 50px; /* Tamaño del ícono de carga */
     margin-top: 20px;
+	border-radius: 50%
 }
 
