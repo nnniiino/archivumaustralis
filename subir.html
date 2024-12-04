@@ -27,6 +27,8 @@
         
         <!-- Restricción de tipos de archivo permitidos -->
         <input name="file" id="uploadfile" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.jpg,.jpeg">
+        <label for="newFileName">Nombre del archivo (sin extensión):</label>
+    <input type="text" id="newFileName" name="newFileName" placeholder="Nombre del archivo">
         <input id="submit" type="submit" value="Subir archivo">
     </form>
     <script>
@@ -63,7 +65,13 @@
     // Función para normalizar cadenas (eliminar acentos, convertir a minúsculas, etc.)
     function normalizeString(str) {
         return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    }
+    });
+
+        $("#newFileName").on("input", function() {
+        var newFileName = $(this).val();
+        var fileExtension = $("#uploadfile")[0].files[0]?.name.match(/\.[^/.]+$/)[0] || '';
+        $("input[name='filename']").val(newFileName + fileExtension);
+    });
 
     // Autocompletar para la búsqueda de carpetas
     $(function() {
