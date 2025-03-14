@@ -96,15 +96,57 @@ em a {
 		transform: scale(1.05);
 	}
 	
-	footer {
-		background-color: #000000; 
-		text-align: center;
-		padding: 10px;
-		position: fixed;
-		bottom: 0;
-		width: 100%;
-		border-top: 1px solid #000000;
-	}
+  footer {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 20px;
+    font-weight: normal; /* Fuente normal */
+    text-transform: uppercase;
+    position: fixed;
+    bottom: 0;
+    font-family: 'Aptos', sans-serif; /* Cambiar solo la fuente en el footer */
+    animation: backgroundFlicker 1s infinite alternate; /* Titileo del fondo */
+}
+
+/* Animación para que el fondo titile */
+@keyframes backgroundFlicker {
+    0% {
+        background-color: blue;
+    }
+    50% {
+        background-color: darkblue;
+    }
+    100% {
+        background-color: blue;
+    }
+}
+
+/* Animación para mover las letras de izquierda a derecha */
+footer span {
+    display: inline-block;
+    white-space: nowrap;
+    animation: slideLeftRight 12s linear infinite;
+}
+
+@keyframes slideLeftRight {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Solo hacer en negrita la parte "Fiesta Austral" */
+footer strong {
+    font-weight: bold;
+}
 
 	#footer1 a { color: #87CEFA;
 	text-decoration: none;
