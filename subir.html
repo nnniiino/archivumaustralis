@@ -65,7 +65,7 @@
     // Función para normalizar cadenas (eliminar acentos, convertir a minúsculas, etc.)
     function normalizeString(str) {
         return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    });
+    };
 
         $("#newFileName").on("input", function() {
         var newFileName = $(this).val();
@@ -567,6 +567,10 @@
         <img src="loading-icon.gif" alt="Cargando..." /> <!-- Puedes usar un GIF o CSS para la animación -->
     </div>
 </div>
+
+    <script src="loading.js"></script>
+</body>
+</html>
 
     <script src="loading.js"></script>
 </body>
