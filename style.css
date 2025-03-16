@@ -101,7 +101,7 @@ em a {
             background-color: blue;
             color: white;
             text-align: center;
-            padding: 15px 0;
+            padding: 20px 0; /* Aumentamos el padding para evitar cortes */
             font-size: 20px;
             font-weight: normal;
             text-transform: uppercase;
@@ -109,8 +109,12 @@ em a {
             bottom: 0;
             font-family: 'Aptos', sans-serif; /* Cambiar solo la fuente en el footer */
             animation: backgroundFlicker 1s infinite alternate; /* Titileo del fondo */
-            white-space: nowrap; /* Evita el salto de línea */
-            overflow: hidden; /* Evita el desbordamiento */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px; /* Altura suficiente para evitar cortes */
+            line-height: 50px; /* Asegura que las letras no se corten */
+            overflow: hidden; /* Evita cualquier recorte inesperado */
         }
 
         /* Animación para que el fondo titile */
@@ -127,25 +131,24 @@ em a {
         }
 
         /* Animación para mover las letras de izquierda a derecha */
-        footer span {
+        .animated-text {
             display: inline-block;
+            position: relative;
             animation: slideLeftRight 12s linear infinite;
+            white-space: nowrap;
         }
 
         @keyframes slideLeftRight {
             0% {
                 transform: translateX(-100%);
             }
-            50% {
-                transform: translateX(0);
-            }
             100% {
-                transform: translateX(100%);
+                transform: translateX(100vw);
             }
         }
 
         /* Solo hacer en negrita la parte "Fiesta Austral" */
-        footer strong {
+        .animated-text strong {
             font-weight: bold;
         }
 
